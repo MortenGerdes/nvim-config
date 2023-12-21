@@ -1,5 +1,7 @@
 return {
-    "neoclide/coc.nvim",
-    branch = "release",
-    run = ":CocInstall coc-graphql coc-go",
+    {
+        "neoclide/coc.nvim",
+        branch = "release",
+        run = ":CocInstall coc-graphql coc-go",
+    },
 }
