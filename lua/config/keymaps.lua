@@ -26,3 +26,10 @@ vim.api.nvim_set_keymap(
     "<cmd>lua vim.lsp.codelens.run()<CR>",
     { noremap = true, silent = true, desc = "Run Codelens option(s)" }
 )
+
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>dA",
+    '<cmd>lua require("dap").clear_breakpoints()<CR>',
+    { noremap = true, silent = true, desc = "Clear (A)ll breakpoints" }
+)
