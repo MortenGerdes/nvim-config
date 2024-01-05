@@ -4,6 +4,8 @@ return {
         opts = {
             label = {
                 uppercase = false,
+                before = true,
+                after = false,
             },
             rainbow = {
                 enabled = true,
