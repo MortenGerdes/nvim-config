@@ -19,6 +19,14 @@ vim.api.nvim_set_keymap(
     { desc = "Opens Live_Grep in Telescope", noremap = true, silent = true }
 )
 
+--Browse document symbols
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>fs",
+    "<cmd>Telescope lsp_document_symbols symbol_width=75<cr>",
+    { desc = "Opens Document_Symbols in Telescope", noremap = true, silent = true }
+)
+
 --Run codelens options
 vim.api.nvim_set_keymap(
     "n",
@@ -27,6 +35,7 @@ vim.api.nvim_set_keymap(
     { noremap = true, silent = true, desc = "Run Codelens option(s)" }
 )
 
+--Clear all breakpoints
 vim.api.nvim_set_keymap(
     "n",
     "<leader>dA",
