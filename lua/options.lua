@@ -38,6 +38,7 @@ opt.undolevels = 10000
 opt.wildmode = "longest:full,full" -- Command-line completion mode
 opt.winminwidth = 5                -- Minimum window width
 opt.wrap = false                   -- Disable line wrap
+opt.timeoutlen = 300
 
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {

@@ -37,18 +37,19 @@ return {
                     -- Buffer local mappings.
                     -- See `:help vim.lsp.*` for documentation on any of the below functions
                     local opts = { buffer = ev.buf }
-                    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-                    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+                    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, vim.tbl_deep_extend("force", opts, {desc = "Go to declaration"}))
+                    vim.keymap.set("n", "gd", vim.lsp.buf.definition, vim.tbl_deep_extend("force", opts, {desc = "Go to definition"}))
                     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-                    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+                    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, vim.tbl_deep_extend("force", opts, {desc = "Go to implementation"}))
                     vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-                    vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
-                    vim.keymap.set("n", "<space>cr", vim.lsp.buf.rename, opts)
-                    vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
-                    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+                    vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, vim.tbl_deep_extend("force", opts, {desc = "Go to type definition"}))
+                    vim.keymap.set("n", "<space>cr", vim.lsp.buf.rename, vim.tbl_deep_extend("force", opts, {desc = "Rename"}))
+                    vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, vim.tbl_deep_extend("force", opts, {desc = "Code account"}))
+                    vim.keymap.set({ "n", "v" }, "<space>cc", vim.lsp.buf.codelens.run(), vim.tbl_deep_extend("force", opts, {desc = "Run Codelens options(s)"}))
+                    vim.keymap.set("n", "gr", vim.lsp.buf.references, vim.tbl_deep_extend("force", opts, {desc = "Go to references"}))
                     vim.keymap.set("n", "<space>cf", function()
                         vim.lsp.buf.format({ async = true })
-                    end, opts)
+                    end, vim.tbl_deep_extend("force", opts, {desc = "Format"}))
                 end,
             })
         end,
