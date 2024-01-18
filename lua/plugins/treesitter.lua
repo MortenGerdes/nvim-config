@@ -1,12 +1,13 @@
 return {
     {
-        'nvim-treesitter/nvim-treesitter',
+        "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         event = { "VeryLazy" },
         config = function(_, opts)
-           require("nvim-treesitter.configs").setup(opts) 
+            require("nvim-treesitter.configs").setup(opts)
         end,
         opts = {
+            auto_install = true,
             highlight = { enable = true },
             indent = { enable = true },
             ensure_installed = {
@@ -32,7 +33,7 @@ return {
                 "vimdoc",
                 "yaml",
                 "go",
-              },
+            },
         },
-    }
+    },
 }
