@@ -1,10 +1,17 @@
 return {
     {
         "ray-x/go.nvim",
+        ft = { "go", "gomod" },
         dependencies = { -- optional packages
             "ray-x/guihua.lua",
             "neovim/nvim-lspconfig",
             "nvim-treesitter/nvim-treesitter",
+        },
+        event = { "CmdlineEnter" },
+        build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
+        keys = {
+            { "<leader>cs", "<cmd>GoFillStruct<cr>", desc = "Go fill struct" },
+            { "<leader>ce", "<cmd>GoIfErr<cr>",      desc = "Go if err" },
         },
         config = function()
             require("go").setup()
@@ -18,21 +25,14 @@ return {
                 group = format_sync_grp,
             })
         end,
-        event = { "CmdlineEnter" },
-        ft = { "go", "gomod" },
-        build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
-        keys = {
-            { "<leader>cs", "<cmd>GoFillStruct<cr>", desc = "Go fill struct" },
-            { "<leader>ce", "<cmd>GoIfErr<cr>",      desc = "Go if err" },
-        },
     },
-
     {
         "leoluz/nvim-dap-go",
+        ft = { "go", "gomod" },
         config = function()
             require("dap-go").setup({
                 delve = {
-                    build_flags = "-tags=integration --only-same-user=false",
+                    build_flags = "-tags=integration",
                 },
             })
         end,

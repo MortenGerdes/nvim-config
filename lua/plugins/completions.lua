@@ -1,19 +1,13 @@
 return {
     {
-        "hrsh7th/cmp-path",
-        dependencies = {
-            "hrsh7th/nvim-cmp",
-        },
-    },
-    {
-        "hrsh7th/cmp-buffer",
-        dependencies = {
-            "hrsh7th/nvim-cmp",
-        },
-    },
-    {
         "hrsh7th/nvim-cmp",
-        event = "VeryLazy",
+        event = "InsertEnter",
+        dependencies = {
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-path",
+            "hrsh7th/cmp-nvim-lsp",
+            "onsails/lspkind.nvim",
+        },
         config = function()
             local cmp = require("cmp")
             local lspkind = require("lspkind")
@@ -60,16 +54,11 @@ return {
         end,
     },
     {
-        "hrsh7th/cmp-nvim-lsp",
-    },
-    {
         "L3MON4D3/LuaSnip",
+        lazy = true,
         dependencies = {
             "saadparwaiz1/cmp_luasnip",
             "rafamadriz/friendly-snippets",
         },
-    },
-    {
-        "onsails/lspkind.nvim",
     },
 }
