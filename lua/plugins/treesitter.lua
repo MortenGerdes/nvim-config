@@ -2,7 +2,8 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-        event = { "VeryLazy" },
+        priority = 999,
+		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
         config = function(_, opts)
             require("nvim-treesitter.configs").setup(opts)
         end,

@@ -1,7 +1,9 @@
 return {
     {
         "ellisonleao/gruvbox.nvim",
+        enabled = true,
         priority = 1000,
+        lazy = false,
         config = function()
             require("gruvbox").setup({
                 overrides = {

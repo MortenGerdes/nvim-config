@@ -64,10 +64,16 @@ return {
 						vim.lsp.buf.implementation,
 						vim.tbl_deep_extend("force", opts, { desc = "Go to implementation" })
 					)
+					vim.keymap.set(
+						"n",
+						"gr",
+						vim.lsp.buf.references,
+						vim.tbl_deep_extend("force", opts, { desc = "Go to references" })
+					)
 					vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
 					vim.keymap.set(
 						"n",
-						"<space>D",
+						"gD",
 						vim.lsp.buf.type_definition,
 						vim.tbl_deep_extend("force", opts, { desc = "Go to type definition" })
 					)
@@ -88,12 +94,6 @@ return {
 						"<space>cc",
 						"<cmd>lua vim.lsp.codelens.run()<cr>",
 						vim.tbl_deep_extend("force", opts, { desc = "Run Codelens options(s)" })
-					)
-					vim.keymap.set(
-						"n",
-						"gr",
-						vim.lsp.buf.references,
-						vim.tbl_deep_extend("force", opts, { desc = "Go to references" })
 					)
 					vim.keymap.set("n", "<space>cf", function()
 						vim.lsp.buf.format({ async = true })
