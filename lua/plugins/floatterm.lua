@@ -1,14 +1,3 @@
-function _G.update_statusline()
- local bufnr = vim.api.nvim_get_current_buf()
- local buftype = vim.api.nvim_buf_get_option(bufnr, 'buftype')
-
- if buftype == 'nofile' then
-    require('lualine').set_statusline('Terminal')
- else
-    require('lualine').reset_statusline()
- end
-end
-
 return {
 	{
 		"numToStr/FTerm.nvim",
@@ -30,7 +19,11 @@ return {
         enabled = true,
 		event = "VeryLazy",
 		config = function()
-			vim.keymap.set({ "n", "t" }, "<c-/>", "<cmd>FloatermToggle<cr>")
+            if vim.fn.has("mac") == 1 then
+                vim.keymap.set({ "n", "t" }, "<c-/>", "<cmd>FloatermToggle<cr>")
+            else
+                vim.keymap.set({ "n", "t" }, "<c-_>", "<cmd>FloatermToggle<cr>")
+            end
 		end,
 	},
 }
