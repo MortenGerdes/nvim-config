@@ -18,12 +18,22 @@ return {
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
 		config = function()
-            require("neodev").setup()
+			require("neodev").setup()
 			local cap = require("cmp_nvim_lsp").default_capabilities()
 
 			local lspconfig = require("lspconfig")
 			lspconfig.gopls.setup({
 				capabilities = cap,
+				cmd = { "gopls", "-remote=auto" },
+				on_attach = on_attach,
+				flags = {
+					debounce_text_changes = 150,
+				},
+				settings = {
+					gopls = {
+						buildFlags = { "-tags=integration" },
+					},
+				},
 			})
 			lspconfig.lua_ls.setup({
 				capabilities = cap,

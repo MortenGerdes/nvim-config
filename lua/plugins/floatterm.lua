@@ -3,7 +3,7 @@ return {
 		"numToStr/FTerm.nvim",
 		event = "VeryLazy",
 		config = function()
-			vim.keymap.set("n", "<c-_>", "<cmd>lua require('FTerm').toggle()<cr>")
+			vim.keymap.set("n", "<c-/>", "<cmd>lua require('FTerm').toggle()<cr>")
 		end,
 		opts = {
 			border = "double",
