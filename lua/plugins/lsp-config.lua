@@ -55,59 +55,28 @@ return {
 					-- Buffer local mappings.
 					-- See `:help vim.lsp.*` for documentation on any of the below functions
 					local opts = { buffer = ev.buf }
-					vim.keymap.set(
-						"n",
-						"gD",
-						vim.lsp.buf.declaration,
-						vim.tbl_deep_extend("force", opts, { desc = "Go to declaration" })
-					)
-					vim.keymap.set(
-						"n",
-						"gd",
-						vim.lsp.buf.definition,
-						vim.tbl_deep_extend("force", opts, { desc = "Go to definition" })
-					)
-					vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-					vim.keymap.set(
-						"n",
-						"gi",
-						vim.lsp.buf.implementation,
-						vim.tbl_deep_extend("force", opts, { desc = "Go to implementation" })
-					)
-					vim.keymap.set(
-						"n",
-						"gr",
-						vim.lsp.buf.references,
-						vim.tbl_deep_extend("force", opts, { desc = "Go to references" })
-					)
-					vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-					vim.keymap.set(
-						"n",
-						"gD",
-						vim.lsp.buf.type_definition,
-						vim.tbl_deep_extend("force", opts, { desc = "Go to type definition" })
-					)
-					vim.keymap.set(
-						"n",
-						"<space>cr",
-						vim.lsp.buf.rename,
-						vim.tbl_deep_extend("force", opts, { desc = "Rename" })
-					)
-					vim.keymap.set(
-						{ "n", "v" },
-						"<space>ca",
-						vim.lsp.buf.code_action,
-						vim.tbl_deep_extend("force", opts, { desc = "Code account" })
-					)
-					vim.keymap.set(
-						{ "n", "v" },
-						"<space>cc",
-						"<cmd>lua vim.lsp.codelens.run()<cr>",
-						vim.tbl_deep_extend("force", opts, { desc = "Run Codelens options(s)" })
-					)
-					vim.keymap.set("n", "<space>cf", function()
-						vim.lsp.buf.format({ async = true })
-					end, vim.tbl_deep_extend("force", opts, { desc = "Format" }))
+
+                    -- stylua: ignore start
+                    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, vim.tbl_deep_extend("force", opts,                                                                       { desc = "Go to declaration" }))
+                    vim.keymap.set( "n", "gd", function () require("telescope.builtin").lsp_definitions({ reuse_win = true }) end, vim.tbl_deep_extend("force", opts,           { desc = "Go to definition" }))
+                    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+                    vim.keymap.set( "n", "gI", function () require("telescope.builtin").lsp_implementations({ reuse_win = true }) end, vim.tbl_deep_extend("force", opts,       { desc = "Go to implementation" }))
+                    vim.keymap.set( "n", "gr", function() require('telescope.builtin').lsp_references({ reuse_win = true })end, vim.tbl_deep_extend("force", opts,              { desc = "Go to references" }))
+                    vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts) vim.keymap.set( "n", "gD", vim.lsp.buf.type_definition, vim.tbl_deep_extend("force", opts,   { desc = "Go to type definition" }))
+                    vim.keymap.set( "n", "<space>cr", vim.lsp.buf.rename, vim.tbl_deep_extend("force", opts,                                                                    { desc = "Rename" }))
+                    vim.keymap.set( { "n", "v" }, "<space>ca", vim.lsp.buf.code_action, vim.tbl_deep_extend("force", opts,                                                      { desc = "Code action" }))
+                    vim.keymap.set( { "n", "v" }, "<space>cc", "<cmd>lua vim.lsp.codelens.run()<cr>", vim.tbl_deep_extend("force", opts,                                        { desc = "Run Codelens options(s)" }))
+                    vim.keymap.set("n", "<space>cf", function()
+                        vim.lsp.buf.format({
+                            async = false,
+                            filter = function(client)
+                                --If language is lua then use null-ls
+                                return client.name == "null-ls" and vim.bo.filetype == "lua"
+                            end,
+                            })
+                    end,
+                    vim.tbl_deep_extend("force", opts,                                                                                                                          { desc = "Format" }))
+					-- stylua: ignore end
 				end,
 			})
 		end,
