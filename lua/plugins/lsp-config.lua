@@ -11,7 +11,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
 		opts = {
-			ensure_installed = { "lua_ls", "gopls" },
+			ensure_installed = { "lua_ls", "gopls", "graphql" },
 		},
 	},
 	{
@@ -44,6 +44,10 @@ return {
 						},
 					},
 				},
+			})
+			lspconfig.graphql.setup({
+				capabilities = cap,
+				cmd = { "graphql-lsp", "server", "-m", "stream", "-c"},
 			})
 
 			vim.api.nvim_create_autocmd("LspAttach", {
