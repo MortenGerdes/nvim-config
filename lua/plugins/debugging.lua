@@ -1,64 +1,64 @@
 return {
-    {
-        "mfussenegger/nvim-dap",
+	{
+		"mfussenegger/nvim-dap",
 
-        dependencies = {
-            -- fancy UI for the debugger
-            {
-                "rcarriga/nvim-dap-ui",
+		dependencies = {
+			-- fancy UI for the debugger
+			{
+				"rcarriga/nvim-dap-ui",
                 -- stylua: ignore
                 keys = {
                     { "<leader>du", function() require("dapui").toggle({}) end, desc = "Dap UI" },
                     { "<leader>de", function() require("dapui").eval() end,     desc = "Eval",  mode = { "n", "v" } },
                 },
-                opts = {},
-                config = function(_, opts)
-                    local dap = require("dap")
-                    local dapui = require("dapui")
+				opts = {},
+				config = function(_, opts)
+					local dap = require("dap")
+					local dapui = require("dapui")
 
-                    --require("dap-go").setup()
+					--require("dap-go").setup()
 
-                    dapui.setup(opts)
-                    dap.listeners.after.event_initialized["dapui_config"] = function()
-                        dapui.open({})
-                    end
-                    dap.listeners.before.event_terminated["dapui_config"] = function()
-                        dapui.close({})
-                    end
-                    dap.listeners.before.event_exited["dapui_config"] = function()
-                        dapui.close({})
-                    end
-                end,
-            },
+					dapui.setup(opts)
+					dap.listeners.after.event_initialized["dapui_config"] = function()
+						dapui.open({})
+					end
+					dap.listeners.before.event_terminated["dapui_config"] = function()
+						dapui.close({})
+					end
+					dap.listeners.before.event_exited["dapui_config"] = function()
+						dapui.close({})
+					end
+				end,
+			},
 
-            -- virtual text for the debugger
-            {
-                "theHamsta/nvim-dap-virtual-text",
-                opts = {},
-            },
+			-- virtual text for the debugger
+			{
+				"theHamsta/nvim-dap-virtual-text",
+				opts = {},
+			},
 
-            -- mason.nvim integration
-            {
-                "jay-babu/mason-nvim-dap.nvim",
-                dependencies = "mason.nvim",
-                cmd = { "DapInstall", "DapUninstall" },
-                opts = {
-                    -- Makes a best effort to setup the various debuggers with
-                    -- reasonable debug configurations
-                    automatic_installation = true,
+			-- mason.nvim integration
+			{
+				"jay-babu/mason-nvim-dap.nvim",
+				dependencies = "mason.nvim",
+				cmd = { "DapInstall", "DapUninstall" },
+				opts = {
+					-- Makes a best effort to setup the various debuggers with
+					-- reasonable debug configurations
+					automatic_installation = true,
 
-                    -- You can provide additional configuration to the handlers,
-                    -- see mason-nvim-dap README for more information
-                    handlers = {},
+					-- You can provide additional configuration to the handlers,
+					-- see mason-nvim-dap README for more information
+					handlers = {},
 
-                    -- You'll need to check that you have the required things installed
-                    -- online, please don't ask me how to install them :)
-                    ensure_installed = {
-                        "delve",
-                    },
-                },
-            },
-        },
+					-- You'll need to check that you have the required things installed
+					-- online, please don't ask me how to install them :)
+					ensure_installed = {
+						"delve",
+					},
+				},
+			},
+		},
 
         -- stylua: ignore
         keys = {
@@ -66,6 +66,7 @@ return {
             { "<leader>db", function() require("dap").toggle_breakpoint() end,                                    desc = "Toggle Breakpoint" },
             { "<leader>dc", function() require("dap").continue() end,                                             desc = "Continue" },
             { "<leader>da", function() require("dap").continue({ before = get_args }) end,                        desc = "Run with Args" },
+            { "<leader>dA", function() require("dap").clear_breakpoints() end,                                    desc = "Clear all breakpoints" },
             { "<leader>dC", function() require("dap").run_to_cursor() end,                                        desc = "Run to Cursor" },
             { "<leader>dg", function() require("dap").goto_() end,                                                desc = "Go to line (no execute)" },
             { "<leader>di", function() require("dap").step_into() end,                                            desc = "Step Into" },
@@ -80,5 +81,5 @@ return {
             { "<leader>dt", function() require("dap").terminate() end,                                            desc = "Terminate" },
             { "<leader>dw", function() require("dap.ui.widgets").hover() end,                                     desc = "Widgets" },
         },
-    },
+	},
 }
