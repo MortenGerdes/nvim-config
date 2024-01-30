@@ -6,6 +6,7 @@ return {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-cmdline",
 			"onsails/lspkind.nvim",
 		},
 		config = function()
@@ -21,7 +22,7 @@ return {
 				luasnip = "[snip]",
 				vim_dadbod_completion = "[db]", -- I can't get this to work
 			}
-            menu["vim-dadbod-completion"] = "[db]"
+			menu["vim-dadbod-completion"] = "[db]"
 
 			cmp.setup({
 				snippet = {
@@ -54,6 +55,20 @@ return {
 					{ name = "vim-dadbod-completion" },
 				}, {
 					{ name = "buffer", keyword_length = 5 },
+				}),
+			})
+			cmp.setup.cmdline({ "/", "?" }, {
+				mapping = cmp.mapping.preset.cmdline(),
+				sources = {
+					{ name = "buffer" },
+				},
+			})
+			cmp.setup.cmdline(":", {
+				mapping = cmp.mapping.preset.cmdline(),
+				sources = cmp.config.sources({
+					{ name = "path" },
+				}, {
+					{ name = "cmdline" },
 				}),
 			})
 		end,

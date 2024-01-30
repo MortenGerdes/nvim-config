@@ -47,8 +47,11 @@ return {
 			})
 			lspconfig.graphql.setup({
 				capabilities = cap,
-				cmd = { "graphql-lsp", "server", "-m", "stream", "-c"},
+				cmd = { "graphql-lsp", "server", "-m", "stream", "-c" },
 			})
+            lspconfig.spectral.setup({
+                capabilities = cap,
+            })
 
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
