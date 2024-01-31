@@ -13,5 +13,14 @@ vim.opt.rtp:prepend(lazypath)
 
 require("options")
 require("keymaps")
-require("lazy").setup("plugins")
+require("lazy").setup("plugins", {
+    install = {
+        colorscheme = { "gruvbox" },
+    },
+    checker = {
+        enabled = false, -- We'll manually handle this
+        notify = false,
+        frequency = 60 * 60 * 24 * 7, -- 1 week when enabled
+    },
+})
 vim.cmd("colorscheme gruvbox")

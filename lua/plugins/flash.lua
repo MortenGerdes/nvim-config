@@ -1,7 +1,11 @@
 return {
 	{
 		"folke/flash.nvim",
-		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+		--event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+		keys = {
+            --stylua: ignore
+			{ "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash", },
+		},
 		opts = {
 			label = {
 				uppercase = false,
@@ -14,15 +18,8 @@ return {
 				shade = 5,
 			},
 		},
-		keys = {
-			{
-				"s",
-				mode = { "n", "x", "o" },
-				function()
-					require("flash").jump()
-				end,
-				desc = "Flash",
-			},
-		},
+		config = function(_, opts)
+			require("flash").setup(opts)
+		end,
 	},
 }
