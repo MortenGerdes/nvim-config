@@ -1,7 +1,8 @@
 return {
 	{
 		"nvim-neo-tree/neo-tree.nvim",
-        cmd = "Neotree",
+        enabled = false,
+		cmd = "Neotree",
 		branch = "v3.x",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -25,7 +26,7 @@ return {
 			},
 			sources = { "filesystem", "buffers", "git_status", "document_symbols" },
 			filesystem = {
-                bind_to_cwd = false,
+				bind_to_cwd = false,
 				use_libuv_file_watcher = true,
 				filtered_items = {
 					visible = true,
@@ -33,5 +34,22 @@ return {
 				follow_current_file = { enabled = true },
 			},
 		},
+	},
+	{
+		"stevearc/oil.nvim",
+		opts = {
+            view_options = {
+                show_hidden = true,
+            },
+            win_options = {
+                signcolumn = "yes",
+            },
+        },
+		-- Optional dependencies
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+        config = function()
+            require("oil").setup()
+            vim.keymap.set( "n", "-", "<cmd>Oil<cr>", { noremap = true, silent = true })
+        end,
 	},
 }

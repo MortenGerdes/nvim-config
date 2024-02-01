@@ -8,6 +8,8 @@ return {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-cmdline",
 			"onsails/lspkind.nvim",
+			"windwp/nvim-autopairs",
+			"L3MON4D3/LuaSnip",
 		},
 		config = function()
 			local cmp = require("cmp")
@@ -20,9 +22,8 @@ return {
 				nvim_lua = "[api]",
 				path = "[path]",
 				luasnip = "[snip]",
-				vim_dadbod_completion = "[db]", -- I can't get this to work
 			}
-			menu["vim-dadbod-completion"] = "[db]"
+			menu["vim-dadbod-completion"] = "[db]" -- hack to make dadbod to work. Since it's written in Vimscript, it conflicts a bit with Lua
 
 			cmp.setup({
 				snippet = {
@@ -31,6 +32,7 @@ return {
 						require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
 					end,
 				},
+				---@diagnostic disable-next-line: missing-fields
 				formatting = {
 					format = lspkind.cmp_format({
 						with_text = true,
@@ -75,10 +77,21 @@ return {
 	},
 	{
 		"L3MON4D3/LuaSnip",
-		event = "InsertEnter",
+		lazy = true,
 		dependencies = {
 			"saadparwaiz1/cmp_luasnip",
 			"rafamadriz/friendly-snippets",
 		},
+	},
+	{
+		"windwp/nvim-autopairs",
+		lazy = true,
+		config = function()
+			require("nvim-autopairs").setup()
+
+			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+			local cmp = require("cmp")
+			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+		end,
 	},
 }
