@@ -8,7 +8,8 @@ return {
 			{ "<C-S-k>", "<cmd>lua require('harpoon'):list():select(3)<cr>", desc = "Go to Harpoon(3)" },
 			{ "<C-S-l>", "<cmd>lua require('harpoon'):list():select(4)<cr>", desc = "Go to Harpoon(4)" },
 			{ "<leader>a", "<cmd>lua require('harpoon'):list():append()<cr>", desc = "Add current buffer to Harpoon" },
-			{
+            { "<C-e>", "<cmd>lua require('harpoon.ui'):toggle_quick_menu(require('harpoon'):list())<cr>", desc = "Open Harpoon list"},
+			--[[{ -- If we want to use Telescope for showing the list
 				"<C-e>",
 				function()
 					local conf = require("telescope.config").values
@@ -30,7 +31,7 @@ return {
 						:find()
 				end,
 				desc = "Open Harpoon list",
-			},
+			},]]--
 		},
 		requires = { { "nvim-lua/plenary.nvim" } },
 		dependencies = { "nvim-telescope/telescope.nvim" },

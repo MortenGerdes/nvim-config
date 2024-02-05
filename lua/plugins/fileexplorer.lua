@@ -1,7 +1,7 @@
 return {
 	{
 		"nvim-neo-tree/neo-tree.nvim",
-        enabled = false,
+		enabled = false,
 		cmd = "Neotree",
 		branch = "v3.x",
 		dependencies = {
@@ -38,18 +38,22 @@ return {
 	{
 		"stevearc/oil.nvim",
 		opts = {
-            view_options = {
-                show_hidden = true,
-            },
-            win_options = {
-                signcolumn = "yes",
-            },
-        },
+            default_file_explorer = false,
+			view_options = {
+				show_hidden = true,
+				is_hidden_file = function(name, _) -- This function defines what is considered a "hidden" file
+					return vim.startswith(name, ".")
+				end,
+			},
+			win_options = {
+				signcolumn = "yes",
+			},
+		},
 		-- Optional dependencies
 		dependencies = { "nvim-tree/nvim-web-devicons" },
-        config = function()
-            require("oil").setup()
-            vim.keymap.set( "n", "-", "<cmd>Oil<cr>", { noremap = true, silent = true })
-        end,
+		config = function(_, opts)
+			require("oil").setup(opts)
+			vim.keymap.set("n", "-", "<cmd>Oil<cr>", { noremap = true, silent = true })
+		end,
 	},
 }
