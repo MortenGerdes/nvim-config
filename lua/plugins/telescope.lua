@@ -1,5 +1,7 @@
 local function git_files_or_find_files()
-	local opts = {}
+	local opts = {
+		previewer = false,
+	}
 	local ok = pcall(require("telescope.builtin").git_files, opts)
 	if not ok then
 		require("telescope.builtin").find_files(opts)
@@ -14,9 +16,11 @@ return {
 		config = function()
 			require("telescope").load_extension("fzf")
 		end,
+        -- stylua: ignore
 		keys = {
-			{ "<leader><Space>", git_files_or_find_files, { desc = "Find files" } },
-			{ "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Live grep" } },
+			{ "<leader><Space>", git_files_or_find_files,                   { desc = "Find files" } },
+			{ "<leader>fg", "<cmd>Telescope live_grep<cr>",                 { desc = "Live grep" } },
+			{ "<leader>ff", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = "Fuzzy find in buffer" } },
 		},
 	},
 	{
