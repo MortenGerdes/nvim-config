@@ -2,6 +2,7 @@ return {
 	"nvimdev/dashboard-nvim",
 	event = "VimEnter",
 	opts = function()
+        math.randomseed(os.time()) -- A hack for Windows WLS. The seed is static otherwise
 		local opts = {
 			theme = "doom",
 			hide = {
