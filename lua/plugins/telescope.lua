@@ -18,9 +18,10 @@ return {
 		end,
         -- stylua: ignore
 		keys = {
-			{ "<leader><Space>", git_files_or_find_files,                   { desc = "Find files" } },
+			{ "<leader><Space>", git_files_or_find_files,                   { desc = "Smart find files" } },
+			{ "<leader>ff", "<cmd>Telescope find_files<cr>",                { desc = "Find files" } },
 			{ "<leader>fg", "<cmd>Telescope live_grep<cr>",                 { desc = "Live grep" } },
-			{ "<leader>ff", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = "Fuzzy find in buffer" } },
+			{ "<leader>fb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = "Fuzzy find in buffer" } },
 		},
 	},
 	{
