@@ -20,8 +20,8 @@ local custom_goto_definition_spectral = function()
 	local parts = vim.split(content, "/")
 	local last = parts[#parts]
 
-	-- Find the <last>: in the file. Get line_nr and col_nr
-    local line_nr = vim.fn.search(last .. ":", "n")
+	-- Find the <last>: in the file. Get line_nr and col_nr.
+    local line_nr = vim.fn.search(last .. ":", "nbw")
 	if line_nr == 0 then
 		vim.print("No definition found 3")
 		return nil, { message = "No definition found", code = -32600 }
