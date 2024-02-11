@@ -1,10 +1,10 @@
-local function get_cwd_name()
-    local cwd = vim.fn.getcwd()
-    local home = vim.fn.expand("$HOME")
-    if cwd == home then
-        return "~"
+local function show_macro_recording()
+    local recording_register = vim.fn.reg_recording()
+    if recording_register == "" then
+        return ""
+    else
+        return "Recording @" .. recording_register
     end
-    return vim.fn.fnamemodify(cwd, ":t")
 end
 
 return {
@@ -20,11 +20,19 @@ return {
 			},
 			sections = {
 				lualine_b = {
-                    { get_cwd_name },
 					{ "branch" },
-					{ "diagnostics" },
 					{ "filename", file_status = true, path = 1 },
 				},
+                lualine_c = {
+					{ "diagnostics" },
+                    { "diff" },
+                    { "gitsigns" },
+                },
+                lualine_x = {
+                    { "filetype" },
+                    { "fileformat" },
+                    { show_macro_recording },
+                },
 			},
 		},
 	},
