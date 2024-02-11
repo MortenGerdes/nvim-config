@@ -1,7 +1,7 @@
 return {
 	{
 		"nvimtools/none-ls.nvim",
-		ft = {"go", "gomod", "lua"},
+		ft = {"go", "gomod", "lua", "yaml" },
 		config = function()
 			local null_ls = require("null-ls")
 			null_ls.setup({
