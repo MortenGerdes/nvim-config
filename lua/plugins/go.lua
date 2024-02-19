@@ -48,6 +48,7 @@ return {
 			adapters = {
 				["neotest-go"] = {
 					args = { "-tags=integration", "-count=1" },
+                    recursive_run = true,
 				},
 			},
 		},
