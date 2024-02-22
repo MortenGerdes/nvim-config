@@ -10,7 +10,7 @@ end
 return {
 	{
 		"nvim-lualine/lualine.nvim",
-		event = "VeryLazy",
+		event = "UIEnter",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {
 			options = {

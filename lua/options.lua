@@ -3,11 +3,10 @@ vim.cmd("set tabstop=4")
 vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
 vim.g.mapleader = " "
---[[ -- Let Neotree handle this. However there is a bug with Neotree atm about coloring the first file opened. So I can't let it load on startup.
+
 vim.g.netrw_banner = 0
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-]]--
 
 
 local opt = vim.opt
@@ -28,6 +27,7 @@ opt.wrap = false -- Disable line wrap
 opt.timeoutlen = 300
 opt.scrolloff = 10
 opt.sidescrolloff = 8
+opt.inccommand = "split"
 
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
