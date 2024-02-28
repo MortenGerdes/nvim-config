@@ -55,7 +55,7 @@ return {
 	},
 	{
 		"nvim-telescope/telescope-ui-select.nvim",
-		event = { "BufReadPost !*oil", "BufNewFile", "BufWritePre" },
+		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
 		config = function()
 			require("telescope").setup({
 				extensions = {

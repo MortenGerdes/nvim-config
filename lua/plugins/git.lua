@@ -8,7 +8,7 @@ return {
 	},
     {
         "lewis6991/gitsigns.nvim",
-		event = { "BufReadPost !*oil", "BufNewFile", "BufWritePre" },
+		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
         opts = {
             current_line_blame = true,
         },

@@ -66,7 +66,7 @@ local on_attach = function(_, bufnr)
     vim.keymap.set( "n", "gI", function () require("telescope.builtin").lsp_implementations({ reuse_win = true }) end, vim.tbl_deep_extend("force", opts,       { desc = "Go to implementation" }))
     vim.keymap.set( "n", "gr", function() require('telescope.builtin').lsp_references({ reuse_win = true })end, vim.tbl_deep_extend("force", opts,              { desc = "Go to references" }))
     vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts) vim.keymap.set( "n", "gD", vim.lsp.buf.type_definition, vim.tbl_deep_extend("force", opts,   { desc = "Go to type definition" }))
-    --vim.keymap.set( "n", "<space>cr", vim.lsp.buf.rename, vim.tbl_deep_extend("force", opts,                                                                    { desc = "Rename" }))
+    vim.keymap.set( "n", "<space>cr", vim.lsp.buf.rename, vim.tbl_deep_extend("force", opts,                                                                    { desc = "Rename" }))
     vim.keymap.set( { "n", "v" }, "<space>ca", vim.lsp.buf.code_action, vim.tbl_deep_extend("force", opts,                                                      { desc = "Code action" }))
     vim.keymap.set( { "n", "v" }, "<space>cc", "<cmd>lua vim.lsp.codelens.run()<cr>", vim.tbl_deep_extend("force", opts,                                        { desc = "Run Codelens options(s)" }))
 	-- stylua: ignore end
@@ -83,14 +83,14 @@ return {
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
-		event = { "BufReadPost !*oil", "BufNewFile", "BufWritePre" },
+		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
 		opts = {
 			ensure_installed = { "lua_ls", "gopls", "graphql", "spectral" },
 		},
 	},
 	{
 		"neovim/nvim-lspconfig",
-		event = { "BufReadPost !*oil", "BufNewFile", "BufWritePre" },
+		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
 		config = function()
 			require("neodev").setup()
 			local cap = require("cmp_nvim_lsp").default_capabilities()
