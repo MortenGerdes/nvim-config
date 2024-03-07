@@ -12,8 +12,15 @@ return {
 			{ "<leader>cs", "<cmd>GoFillStruct<cr>", desc = "Go fill struct" },
 			{ "<leader>ce", "<cmd>GoIfErr<cr>", desc = "Go if err" },
 		},
-		config = function()
-			require("go").setup()
+		opts = {
+			run_in_floaterm = true,
+			floaterm = {
+				posititon = "bottom",
+				height = 0.4,
+			},
+		},
+		config = function(_, opts)
+			require("go").setup(opts)
 
 			local format_sync_grp = vim.api.nvim_create_augroup("GoImport", {})
 			vim.api.nvim_create_autocmd("BufWritePre", {
@@ -48,7 +55,7 @@ return {
 			adapters = {
 				["neotest-go"] = {
 					args = { "-tags=integration", "-count=1" },
-                    recursive_run = true,
+					recursive_run = true,
 				},
 			},
 		},
