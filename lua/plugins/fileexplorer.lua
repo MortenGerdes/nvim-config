@@ -38,7 +38,7 @@ return {
 	{
 		"stevearc/oil.nvim",
 		opts = {
-            default_file_explorer = true,
+            default_file_explorer = false,
 			view_options = {
 				show_hidden = true,
 				is_hidden_file = function(name, _) -- This function defines what is considered a "hidden" file

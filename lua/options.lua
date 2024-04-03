@@ -29,6 +29,7 @@ opt.undolevels = 10000
 opt.wildmode = "longest:full,full" -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
 opt.wrap = false -- Disable line wrap
+vim.opt_local.wrap = false
 opt.timeoutlen = 300
 opt.scrolloff = 10
 opt.sidescrolloff = 8

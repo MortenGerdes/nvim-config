@@ -3,6 +3,7 @@ return {
 		"nvim-neotest/neotest",
 		ft = { "go", "gomod" },
 		dependencies = {
+			"nvim-neotest/nvim-nio",
 			"nvim-lua/plenary.nvim",
 			"antoinemadec/FixCursorHold.nvim",
 			"nvim-treesitter/nvim-treesitter",
