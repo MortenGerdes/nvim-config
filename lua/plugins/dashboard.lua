@@ -1,5 +1,9 @@
 return {
 	"nvimdev/dashboard-nvim",
+    enabled = function()
+        local amountOfArgs = #vim.v.argv
+        return amountOfArgs == 2 -- For some reason, vim starts with 2 "hidden" args by default. 3 if I do "nvim ."
+    end,
 	event = "VimEnter",
 	opts = function()
         math.randomseed(os.time()) -- A hack for Windows WLS. The seed is static otherwise
