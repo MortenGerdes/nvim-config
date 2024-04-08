@@ -18,8 +18,6 @@ local custom_goto_definition_spectral = function()
             vim.print("No definition found 2")
             return nil, { message = "No definition found", code = -32600 }
         end
-		vim.print("No definition found 2")
-		return nil, { message = "No definition found", code = -32600 }
 	end
 
 	-- Split content by / and get the last part
