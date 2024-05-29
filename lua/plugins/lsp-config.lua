@@ -127,6 +127,11 @@ return {
                     vim.keymap.set("n", "gd", custom_goto_definition_spectral, { buffer = bufnr, desc = "Go to definition" })
                 end,
 			})
+
+			lspconfig.bufls.setup({
+				capabilities = cap,
+                on_attach = on_attach,
+			})
 		end,
 	},
 }
