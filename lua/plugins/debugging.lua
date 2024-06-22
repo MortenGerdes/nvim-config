@@ -10,7 +10,30 @@ return {
                     { "<leader>du", function() require("dapui").toggle({}) end, desc = "Dap UI" },
                     { "<leader>de", function() require("dapui").eval() end,     desc = "Eval",  mode = { "n", "v" } },
                 },
-				opts = {},
+				opts = {
+					render = {
+						max_type_length = 0, -- Can be integer or nil.
+					},
+					layouts = {
+						{
+							-- You can change the order of elements in the sidebar
+							elements = {
+								{ id = "breakpoints", size = 0.25 },
+								{ id = "stacks", size = 0.25 },
+								{ id = "watches", size = 0.25 },
+							},
+							size = 40,
+							position = "left", -- Can be "left" or "right"
+						},
+						{
+							elements = {
+								"scopes",
+							},
+							size = 20,
+							position = "bottom", -- Can be "bottom" or "top"
+						},
+					},
+				},
 				config = function(_, opts)
 					local dap = require("dap")
 					local dapui = require("dapui")
