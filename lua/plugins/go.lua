@@ -50,15 +50,14 @@ return {
 		"nvim-neotest/neotest",
 		optional = true,
 		dependencies = {
-			"nvim-neotest/neotest-go",
+			"fredrikaverpil/neotest-golang",
 		},
-		opts = {
+        opts = {
 			adapters = {
-				["neotest-go"] = {
-					args = { "-tags=integration", "-count=1" },
-					recursive_run = true,
+				["neotest-golang"] = {
+					go_test_args = { "-v", "-race", "-count=1", "-tags=integration" },
 				},
 			},
-		},
+        },
 	},
 }
