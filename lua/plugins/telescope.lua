@@ -55,7 +55,7 @@ return {
 	},
 	{
 		"nvim-telescope/telescope-ui-select.nvim",
-		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+        ft = {"go", "lua", "yaml", "yml", "json", "proto"},
 		config = function()
 			require("telescope").setup({
 				extensions = {

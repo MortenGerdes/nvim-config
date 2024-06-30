@@ -2,7 +2,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+        ft = { "c", "cpp", "css", "go", "html", "javascript", "json", "lua", "markdown", "python", "rust", "typescript", "vim", "yaml", },
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-context",
 		},

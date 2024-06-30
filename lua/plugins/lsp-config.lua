@@ -83,14 +83,14 @@ return {
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
-		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+        ft = {"lua", "go", "graphql", "yaml", "yml", "json", "proto"},
 		opts = {
 			ensure_installed = { "lua_ls", "gopls", "graphql", "spectral", "bufls"},
 		},
 	},
 	{
 		"neovim/nvim-lspconfig",
-		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+        ft = {"lua", "go", "graphql", "yaml", "yml", "json", "proto"},
 		config = function()
 			require("neodev").setup()
 			local cap = require("cmp_nvim_lsp").default_capabilities()
