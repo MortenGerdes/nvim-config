@@ -1,6 +1,14 @@
 return {
 	{
 		"mfussenegger/nvim-dap",
+        config = function()
+            -- This is to disable the 'grey' text that fills up the entirre line when debugging
+            -- I hope there's a better way for doing this. But I think the DAP config documentation is garbage
+            local dap = require("dap")
+            dap.listeners.after.event_initialized["disable_virtual_text"] = function()
+                vim.cmd("DapVirtualTextDisable")
+            end
+       end,
 		dependencies = {
 			-- fancy UI for the debugger
 			{

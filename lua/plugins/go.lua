@@ -7,7 +7,7 @@ return {
 			"neovim/nvim-lspconfig",
 			"nvim-treesitter/nvim-treesitter",
 		},
-		build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
+		build = ':lua require("go.install").update_all()', -- if you need to install/update all binaries
 		keys = {
 			{ "<leader>cs", "<cmd>GoFillStruct<cr>", desc = "Go fill struct" },
 			{ "<leader>ce", "<cmd>GoIfErr<cr>", desc = "Go if err" },
@@ -46,18 +46,32 @@ return {
                 { desc = "Debug test", silent = true })
 		end,
 	},
+	-- {
+	-- 	"nvim-neotest/neotest",
+	-- 	optional = true,
+	-- 	dependencies = {
+	-- 		"fredrikaverpil/neotest-golang",
+	-- 	},
+	--        opts = {
+	-- 		adapters = {
+	-- 			["neotest-golang"] = {
+	-- 				go_test_args = { "-v", "-race", "-count=1", "-tags=integration" },
+	-- 			},
+	-- 		},
+	--        },
+	-- },
 	{
 		"nvim-neotest/neotest",
-		optional = true,
 		dependencies = {
-			"fredrikaverpil/neotest-golang",
+			"nvim-neotest/neotest-go",
 		},
-        opts = {
+		opts = {
 			adapters = {
-				["neotest-golang"] = {
-					go_test_args = { "-v", "-race", "-count=1", "-tags=integration" },
+				["neotest-go"] = {
+					args = { "-tags=integration", "-count=1" },
+					recursive_run = true,
 				},
 			},
-        },
+		},
 	},
 }
