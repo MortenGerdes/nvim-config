@@ -46,32 +46,32 @@ return {
                 { desc = "Debug test", silent = true })
 		end,
 	},
-	-- {
-	-- 	"nvim-neotest/neotest",
-	-- 	optional = true,
-	-- 	dependencies = {
-	-- 		"fredrikaverpil/neotest-golang",
-	-- 	},
-	--        opts = {
-	-- 		adapters = {
-	-- 			["neotest-golang"] = {
-	-- 				go_test_args = { "-v", "-race", "-count=1", "-tags=integration" },
-	-- 			},
-	-- 		},
-	--        },
-	-- },
 	{
 		"nvim-neotest/neotest",
+		optional = true,
 		dependencies = {
-			"nvim-neotest/neotest-go",
+			"fredrikaverpil/neotest-golang",
 		},
-		opts = {
+	       opts = {
 			adapters = {
-				["neotest-go"] = {
-					args = { "-tags=integration", "-count=1" },
-					recursive_run = true,
+				["neotest-golang"] = {
+					go_test_args = { "-v", "-race", "-count=1", "-tags=integration" },
 				},
 			},
-		},
+	       },
 	},
+	-- {
+	-- 	"nvim-neotest/neotest",
+	-- 	dependencies = {
+	-- 		"nvim-neotest/neotest-go",
+	-- 	},
+	-- 	opts = {
+	-- 		adapters = {
+	-- 			["neotest-go"] = {
+	-- 				args = { "-tags=integration", "-count=1" },
+	-- 				recursive_run = true,
+	-- 			},
+	-- 		},
+	-- 	},
+	-- },
 }

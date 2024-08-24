@@ -26,7 +26,9 @@ return {
 			menu["vim-dadbod-completion"] = "[db]" -- hack to make dadbod to work. Since it's written in Vimscript, it conflicts a bit with Lua
 
 			cmp.setup({
-				completion = { completeopt = "menu,menuone,noinsert" },
+				completion = {
+                    completeopt = "menu,menuone,longest,noinsert,fuzzy"
+                },
 				snippet = {
 					-- REQUIRED - you must specify a snippet engine
 					expand = function(args)
