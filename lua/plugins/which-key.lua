@@ -22,7 +22,7 @@ return {
 					{ "[",                  group = "prev" },
 					{ "]",                  group = "next" },
 					{ "g",                  group = "goto" },
-					{ "gs",                 group = "surround" },
+					{ "gs",                     group = "surround" },
 				},
 			},
 		},

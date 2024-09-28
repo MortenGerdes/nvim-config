@@ -5,6 +5,9 @@ return {
 		opts = {
 			-- add any options here
 		},
+        keys = {
+            { "<leader>ud", "<cmd>NoiceDismiss<cr>", desc = "Dismiss notification" },
+        },
 		dependencies = {
 			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
 			"MunifTanjim/nui.nvim",
