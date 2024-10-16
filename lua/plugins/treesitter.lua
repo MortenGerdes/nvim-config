@@ -2,7 +2,8 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-        ft = { "c", "cpp", "css", "go", "html", "javascript", "json", "lua", "markdown", "python", "rust", "typescript", "vim", "yaml", },
+        -- ft = { "c", "cpp", "css", "go", "html", "javascript", "json", "lua", "markdown", "python", "rust", "typescript", "vim", "yaml", },
+        event = "VeryLazy",
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-context",
 		},

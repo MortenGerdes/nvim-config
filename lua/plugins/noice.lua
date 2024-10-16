@@ -1,7 +1,8 @@
 return {
 	{
 		"folke/noice.nvim",
-		event = "UIEnter",
+		-- event = "UIEnter",
+        event = "VeryLazy",
 		opts = {
 			-- add any options here
 		},

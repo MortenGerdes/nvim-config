@@ -11,7 +11,8 @@ end
 return {
 	{
 		"nvim-telescope/telescope.nvim",
-		event = "UIEnter", -- We have to load Telescope due to the dashboard using it. Would love a way to lazy load it
+		-- event = "UIEnter", -- We have to load Telescope due to the dashboard using it. Would love a way to lazy load it
+        event = "VeryLazy",
 		tag = "0.1.5",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
